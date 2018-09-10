@@ -127,20 +127,20 @@ https://www.outcoldman.com/en/archive/2017/07/09/kubernetes-monitoring-resources
  <a href="https://github.com/dennyzhang"><img align="bottom"src="https://www.dennyzhang.com/wp-content/uploads/sns/github.png" alt="github" /></a>
  <a href="https://www.dennyzhang.com/slack" target="_blank" rel="nofollow"><img align="bottom" src="https://slack.dennyzhang.com/badge.svg" alt="slack"/></a>
  #+END_HTML
-* org-mode configuration                                           :noexport:
-#+STARTUP: overview customtime noalign logdone
-#+DESCRIPTION: 
-#+KEYWORDS: 
-#+AUTHOR: Denny Zhang
-#+EMAIL:  denny@dennyzhang.com
-#+TAGS: noexport(n)
-#+PRIORITIES: A D C
-#+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
-#+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:not-in-toc
-#+EXPORT_EXCLUDE_TAGS: exclude noexport
-#+SEQ_TODO: TODO HALF ASSIGN | DONE BYPASS DELEGATE CANCELED DEFERRED
-#+LINK_UP:   
-#+LINK_HOME: 
+** org-mode configuration                                          :noexport:
+ #+STARTUP: overview customtime noalign logdone
+ #+DESCRIPTION: 
+ #+KEYWORDS: 
+ #+AUTHOR: Denny Zhang
+ #+EMAIL:  denny@dennyzhang.com
+ #+TAGS: noexport(n)
+ #+PRIORITIES: A D C
+ #+OPTIONS:   H:3 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+ #+OPTIONS:   TeX:t LaTeX:nil skip:nil d:nil todo:t pri:nil tags:not-in-toc
+ #+EXPORT_EXCLUDE_TAGS: exclude noexport
+ #+SEQ_TODO: TODO HALF ASSIGN | DONE BYPASS DELEGATE CANCELED DEFERRED
+ #+LINK_UP:   
+ #+LINK_HOME: 
 * [#A] k8s metric server                                 :noexport:IMPORTANT:
 ** TODO Key scenarios of metric server
 The metrics-server will provide a much needed official API for the internal components of Kubernetes to make decisions about the utilization and performance of the cluster.
@@ -172,6 +172,12 @@ Kubectl top: The command top of our beloved Kubernetes CLI display metrics direc
 Kubernetes dashboard: See Pod and Nodes metrics integrated into the main Kubernetes UI dashboard. More info here
 Scheduler: In the future Core Metrics will be considered in order to schedule best-effort Pods.
 #+END_EXAMPLE
+* DONE "kubectl top" need heapster                                 :noexport:
+  CLOSED: [2018-07-31 Tue 16:40]
+#+BEGIN_EXAMPLE
+kubo@jumper:~$ kubectl top pod --all-namespaces --containers=true
+Error from server (ServiceUnavailable): the server is currently unable to handle the request (get services http:heapster:)
+#+END_EXAMPLE
 * Kubernetes Monitoring: prometheus, heapster                      :noexport:
 https://deis.com/blog/2016/monitoring-kubernetes-with-heapster/
 https://groups.google.com/forum/#!topic/prometheus-developers/3zq4oD7if3s
@@ -196,11 +202,5 @@ Basically, if you have Prometheus, there's almost no reason to use heapster.
 ** What is the relationship of heapster and prometheus
 https://groups.google.com/forum/#!topic/prometheus-developers/3zq4oD7if3s
 https://github.com/kubernetes/heapster/issues/665
-
-* DONE "kubectl top" need heapster                                 :noexport:
-  CLOSED: [2018-07-31 Tue 16:40]
-#+BEGIN_EXAMPLE
-kubo@jumper:~$ kubectl top pod --all-namespaces --containers=true
-Error from server (ServiceUnavailable): the server is currently unable to handle the request (get services http:heapster:)
-#+END_EXAMPLE
-
+* TODO try to talk with controller manager metrics                 :noexport:
+https://kubernetes.io/docs/concepts/cluster-administration/controller-metrics/
